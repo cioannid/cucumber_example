@@ -42,9 +42,7 @@ get '/' do
   <html>
     <body>
       <form action="/withdraw" method="post">
-        <label for="amount">Amount</label>
-        <input type="text" id="amount" name="amount">
-        <button type="submit">Withdraw</button>
+        <button type="submit" name="amount" value="20">$20</button>
       </form>
     </body>
   </html>

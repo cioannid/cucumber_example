@@ -43,6 +43,8 @@ get '/' do
     <body>
       <form action="/withdraw" method="post">
         <button type="submit" name="amount" value="20">$20</button>
+        <button type="submit" name="amount" value="40">$40</button>
+        <button type="submit" name="amount" value="60">$60</button>
       </form>
     </body>
   </html>

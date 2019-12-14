@@ -44,7 +44,7 @@ module KnowsTheUserInterfaceWithPredefinedAmounts
     def withdraw_from(account, amount)
       Sinatra::Application.account = account
       visit '/'
-      click_button '$20'
+      click_button "$#{amount}"
     end
   end
 

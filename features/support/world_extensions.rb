@@ -46,6 +46,10 @@ module KnowsTheUserInterfaceWithPredefinedAmounts
       visit '/'
       click_button "$#{amount}"
     end
+
+    def response
+      page.find('#response').text
+    end
   end
 
   def my_account

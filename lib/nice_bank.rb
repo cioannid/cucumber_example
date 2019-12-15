@@ -33,6 +33,10 @@ class Teller
   rescue Account::InsufficientBalanceError => e
     @response = e.message
   end
+
+  def balance_of(account)
+    @response = "Balance: $#{account.balance}"
+  end
 end
 
 class CashSlot
@@ -51,16 +55,29 @@ require 'sinatra'
 
 get '/' do
   %{
-  <html>
-    <body>
-      <form action="/withdraw" method="post">
-        <button type="submit" name="amount" value="20">$20</button>
-        <button type="submit" name="amount" value="40">$40</button>
-        <button type="submit" name="amount" value="60">$60</button>
-        <button type="submit" name="amount" value="200">$200</button>
-      </form>
-    </body>
-  </html>
+    <html>
+      <body>
+        <form action="/withdraw" method="post">
+          <button type="submit" name="amount" value="20">$20</button>
+          <button type="submit" name="amount" value="40">$40</button>
+          <button type="submit" name="amount" value="60">$60</button>
+          <button type="submit" name="amount" value="200">$200</button>
+        </form>
+      </body>
+    </html>
+  }
+end
+
+get '/balance' do
+  teller = Teller.new(settings.cash_slot)
+  teller.balance_of(settings.account)
+
+  %{
+    <html>
+      <body>
+        <div id='response'>#{teller.response}</div>
+      </body>
+    </html>
   }
 end
 

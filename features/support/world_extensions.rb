@@ -50,6 +50,11 @@ module KnowsTheUserInterfaceWithPredefinedAmounts
     def response
       page.find('#response').text
     end
+
+    def balance_of(account)
+      Sinatra::Application.account = account
+      visit '/balance'
+    end
   end
 
   def my_account
